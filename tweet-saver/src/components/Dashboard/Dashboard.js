@@ -8,7 +8,6 @@ const Dashboard = () => {
   return (
     <>
       <Heading level={1} text="Tweet Saver" />
-      <p>Dashboard</p>
       <SearchBox />
       <TweetList />
       <SavedTweets />
