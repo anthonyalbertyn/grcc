@@ -2,11 +2,14 @@ import React from "react";
 import { Input } from "antd";
 const { Search } = Input;
 
-const SearchBox = () => {
+const SearchBox = ({ onSearchCallback }) => {
+  const handleOnSearch = (value) => {
+    onSearchCallback(value);
+  };
   return (
     <Search
-      placeholder="input search text"
-      onSearch={(value) => console.log(value)}
+      placeholder="Search Twitter"
+      onSearch={(value) => handleOnSearch(value)}
       className="search-box"
     />
   );
