@@ -1,19 +1,13 @@
 import React from "react";
 import "./App.css";
-import SavedTweets from "./components/SavedTweets";
-import Search from "./components/Search";
-import Tweet from "./components/Tweet";
-import TweetList from "./components/TweetList";
+import Dashboard from "./components/Dashboard";
 import "antd/dist/antd.css";
 
 const App = () => {
   return (
     <div className="app">
       <div>App</div>
-      <Search />
-      <TweetList />
-      <Tweet />
-      <SavedTweets />
+      <Dashboard />
     </div>
   );
 };
