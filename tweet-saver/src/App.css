@@ -12,7 +12,6 @@
 .dashboard-tweets-wrapper {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
   padding-top: 2rem;
 }
 
@@ -28,8 +27,9 @@
 .saved-tweets {
   border: 1px solid lightgray;
   box-sizing: border-box;
-  min-height: 500px;
+  height: 500px;
   padding: 1rem;
+  overflow-y: scroll;
 }
 
 .search-box {
@@ -48,6 +48,7 @@
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   box-sizing: border-box;
   min-width: 200px;
+  padding: 1rem;
 }
 
 .tweet-avatar-wrapper {

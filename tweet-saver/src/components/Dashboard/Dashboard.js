@@ -26,22 +26,18 @@ const Dashboard = ({
       fetch(URL)
         .then((response) => {
           if (response.ok) {
-            console.log("response:", response);
             return response.json();
           }
           throw new Error(response.statusText);
         })
         .then((result) => {
           setTweetData(result);
-          /* 
           if (result.tweets && result.tweets.length > 0) {
-            setSearchResultsMessage("No tweets match your search");
-            setTweets(result.tweets);
+            setTweetData(result);
           } else {
-            setSearchResultsMessage("No tweets match your search");
-            setTweets([]);
+            setSearchResultsMessage("No tweets currently match your search");
+            setTweetData();
           }
-          */
         })
         .catch((e) => {
           console.error(e);
@@ -55,12 +51,11 @@ const Dashboard = ({
 
   return (
     <div className="dashboard">
-      {console.log(tweetData)}
       <Heading level={1} text="Tweet Saver" />
       <div className="dashboard-tweets-wrapper">
         <div className="dashboard-tweets">
           <SearchBox onSearchCallback={handleOnSearch} />
-          <TweetList />
+          <TweetList tweetData={tweetData} message={searchResultsMessage} />
         </div>
         <div className="dashboard-saved-tweets">
           <div className="dashboard-saved-tweets-heading">Saved Tweets</div>
