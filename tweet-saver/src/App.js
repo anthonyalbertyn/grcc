@@ -4,6 +4,7 @@ import SavedTweets from "./components/SavedTweets";
 import Search from "./components/Search";
 import Tweet from "./components/Tweet";
 import TweetList from "./components/TweetList";
+import "antd/dist/antd.css";
 
 const App = () => {
   return (
