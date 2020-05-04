@@ -1,13 +1,13 @@
 import React from "react";
 import SavedTweets from "../SavedTweets";
-import Search from "../Search";
+import SearchBox from "../SearchBox";
 import TweetList from "../TweetList";
 
 const Dashboard = () => {
   return (
     <>
       <p>Dashboard</p>
-      <Search />
+      <SearchBox />
       <TweetList />
       <SavedTweets />
     </>
