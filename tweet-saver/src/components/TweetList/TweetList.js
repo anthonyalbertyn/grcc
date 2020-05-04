@@ -3,10 +3,9 @@ import Tweet from "../Tweet";
 
 const TweetList = () => {
   return (
-    <>
-      <p>Tweet list</p>
+    <div className="tweet-list">
       <Tweet />
-    </>
+    </div>
   );
 };
 

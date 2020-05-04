@@ -7,6 +7,7 @@ const SearchBox = () => {
     <Search
       placeholder="input search text"
       onSearch={(value) => console.log(value)}
+      className="search-box"
     />
   );
 };
