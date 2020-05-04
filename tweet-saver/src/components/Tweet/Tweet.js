@@ -31,5 +31,3 @@ const Tweet = ({
 };
 
 export default Tweet;
-
-// 1588592813000
