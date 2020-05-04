@@ -6,7 +6,7 @@ import Heading from "../Heading";
 
 const Dashboard = () => {
   return (
-    <div className="dasgboard">
+    <div className="dashboard">
       <Heading level={1} text="Tweet Saver" />
       <div className="dashboard-tweets-wrapper">
         <div className="dashboard-tweets">

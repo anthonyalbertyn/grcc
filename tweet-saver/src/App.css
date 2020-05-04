@@ -28,6 +28,7 @@
 .saved-tweets {
   border: 1px solid lightgray;
   box-sizing: border-box;
+  min-height: 500px;
   padding: 1rem;
 }
 
