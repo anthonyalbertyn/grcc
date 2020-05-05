@@ -1,14 +1,29 @@
 import React from "react";
 
+// id prop is required but only used in data-tweet
 const Tweet = ({
+  id = "",
   imageURL = "",
   screenName = "",
   name = "",
   date = "",
   text = "",
+  isSavedTweet,
+  onDragStartCallback,
 }) => {
+  const handleOnDragStart = (event) => {
+    if (!isSavedTweet) {
+      onDragStartCallback(event);
+    }
+  };
+
   return (
-    <div className="tweet">
+    <div
+      id={id}
+      className="tweet"
+      draggable={!isSavedTweet}
+      onDragStart={handleOnDragStart}
+    >
       <div className="tweet-avatar-wrapper">
         {imageURL && (
           <img className="tweet-avatar" src={imageURL} alt={screenName} />

@@ -11,14 +11,69 @@ const Dashboard = ({
   const [tweetData, setTweetData] = useState([]);
   const [query, setQuery] = useState("");
   const [searchResultsMessage, setSearchResultsMessage] = useState("");
-  const [searchText, setSearchText] = useState("");
   const [savedTweets, setSavedTweets] = useState([]);
+  const [tweetsToSave, setTweetsToSave] = useState([]);
 
-  const handleOnSearch = (query) => {
+  const handleSearch = (query) => {
     setQuery(query);
   };
 
-  useEffect(() => {}, []);
+  const handleDrop = (event) => {
+    event.preventDefault();
+    const jsonDataForTweet = event.dataTransfer.getData("dataForTweet");
+    const dataForTweet = JSON.parse(jsonDataForTweet);
+    if (dataForTweet) {
+      setTweetsToSave([dataForTweet, ...savedTweets]);
+    }
+  };
+
+  const getTweetData = (tweetId = "") => {
+    let dataForTweet;
+    if (tweetData && tweetData.tweets && tweetData.tweets.length > 0) {
+      const filteredTweets = tweetData.tweets.filter(
+        (item) => item.id === parseInt(tweetId, 10)
+      );
+      if (filteredTweets.length > 0) {
+        const item = filteredTweets[0];
+        dataForTweet = {
+          id: item.id.toString(),
+          imageURL: item.user.profileImageURLHttps,
+          name: item.name,
+          screenName: item.user.screenName,
+          date: new Date(item.createdAt).toLocaleString(),
+          text: item.text,
+        };
+      }
+    }
+    return dataForTweet;
+  };
+
+  const handleDragStart = (event) => {
+    const dataForTweet = getTweetData(event.target.id);
+    const jsonDataForTweet = JSON.stringify(dataForTweet);
+    if (dataForTweet.id && jsonDataForTweet) {
+      event.dataTransfer.setData("dataForTweet", jsonDataForTweet);
+    }
+  };
+
+  useEffect(() => {
+    if (tweetsToSave && tweetsToSave.length > 0) {
+      const data = JSON.stringify(tweetsToSave);
+      if (data) {
+        localStorage.setItem("tweets", data);
+        setTweetsToSave([]);
+      }
+    }
+  }, [tweetsToSave]);
+
+  useEffect(() => {
+    const localSavedTweets = localStorage.getItem("tweets");
+    const tweetsArray = JSON.parse(localSavedTweets);
+    if (tweetsArray && tweetsArray.length > 0) {
+      setSavedTweets(tweetsArray);
+    }
+  }, [tweetsToSave]);
+
   useEffect(() => {
     const encodedQuery = encodeURIComponent(query);
     const URL = `${endpoint}?q=${encodedQuery}&count=${numberTweets}`;
@@ -54,12 +109,16 @@ const Dashboard = ({
       <Heading level={1} text="Tweet Saver" />
       <div className="dashboard-tweets-wrapper">
         <div className="dashboard-tweets">
-          <SearchBox onSearchCallback={handleOnSearch} />
-          <TweetList tweetData={tweetData} message={searchResultsMessage} />
+          <SearchBox onSearchCallback={handleSearch} />
+          <TweetList
+            tweetData={tweetData}
+            message={searchResultsMessage}
+            onDragStartCallback={handleDragStart}
+          />
         </div>
         <div className="dashboard-saved-tweets">
           <div className="dashboard-saved-tweets-heading">Saved Tweets</div>
-          <SavedTweets />
+          <SavedTweets tweets={savedTweets} onDropCallback={handleDrop} />
         </div>
       </div>
     </div>
