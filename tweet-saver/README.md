@@ -1,3 +1,24 @@
+# Tweet Saver
+
+To avoid CORS issues, I have setup a proxy server. The proxy server needs to be started before using the app.
+
+The proxy server runs on Node and uses Express. To start the proxy server
+from the project root:
+
+cd proxy
+yarn install
+yarn start
+
+The proxy server runs at http://localhost:4000
+See the README in the proxy directory for more information on checking
+to see that the proxy server is working.
+
+To start this Tweet Saver app after starting the proxy server,
+in this directory do
+
+yarn install
+yarn start
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
