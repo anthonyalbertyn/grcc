@@ -5,6 +5,8 @@ Author: Anthony Albertyn
 If there are any problems starting and testing the app and proxy server,
 please contact the author.
 
+This app is available at: https://github.com/anthonyalbertyn/grcc/
+
 ## Description
 
 - Displays a search box to search for tweets
