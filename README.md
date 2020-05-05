@@ -23,6 +23,7 @@ The proxy server runs on Node and uses Express. To start the proxy server
 from the project root:
 
 cd proxy
+yarn install
 yarn start
 
 The proxy server will be available from localhost:4000
