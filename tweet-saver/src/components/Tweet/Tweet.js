@@ -1,6 +1,5 @@
 import React from "react";
 
-// id prop is required but only used in data-tweet
 const Tweet = ({
   id = "",
   imageURL = "",
