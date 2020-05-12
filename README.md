@@ -9,7 +9,15 @@ This app is available at: https://github.com/anthonyalbertyn/grcc/
 
 ## Description
 
-- Displays a search box to search for tweets
+This is a coding challange completed for a company. They provided an endpoint
+to a REST server at http://tweetsaver.herokuapp.com/ that produces tweets.
+The endpoint has two parameters, 'q' for the search query and 'count' for the
+number of tweets to be returned in the response. The response is in JSON format.
+This endpoint will eventually stop working once the organisation disables it.
+
+## Coding challenge
+
+- Display a search box to search for tweets
 - 10 tweets that match the search query are listed in a container below the search box
 - User can drag a tweet from the search results to a saved tweets box
 - On drop, the tweet is saved to local storage and saved also displayed in the saved tweets box
